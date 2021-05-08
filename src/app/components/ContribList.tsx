@@ -32,7 +32,7 @@ const ContribList: React.SFC<ContribListProps> = (Props: ContribListProps) => {
 
     return (
         <div className="contrib-list">
-            <h2>Select up to 6 team members</h2>
+            <h2>Select team members</h2>
             {showErr && (
                 <p style={{color: 'red'}}>
                     You can only select up to 6 team members. If you have selected more, we will only use the first 6.

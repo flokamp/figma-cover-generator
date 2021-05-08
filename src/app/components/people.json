@@ -1,32 +1,56 @@
 {
-    "aaron": {
-        "name": "Aaron Jiang",
-        "color": "Black",
+    "florence": {
+        "name": "Florence",
+        "color": "Dark White",
         "clothes": "Basic",
+        "pose": "6"
+    },
+    "truman": {
+        "name": "Truman",
+        "color": "Dark White",
+        "clothes": "Basic",
+        "pose": "0"
+    },
+    "colby": {
+        "name": "Colby",
+        "color": "Dark White",
+        "clothes": "Jacket",
         "pose": "1"
     },
-    "leon": {
-        "name": "Leon Han",
-        "color": "Blue",
+    "john": {
+        "name": "John",
+        "color": "Dark White",
         "clothes": "Jacket",
         "pose": "2"
     },
-    "emily": {
-        "name": "Emily Louie",
-        "color": "Brown",
-        "clothes": "Jumper",
+    "dmitry": {
+        "name": "Dmitry",
+        "color": "Dark White",
+        "clothes": "Jacket",
         "pose": "3"
     },
-    "jayden": {
-        "name": "Jayden Hsiao",
-        "color": "Dark-white",
-        "clothes": "Basic",
+    "sergei": {
+        "name": "sergei",
+        "color": "Dark White",
+        "clothes": "Jumper",
         "pose": "4"
     },
-    "kevin": {
-        "name": "Kevin Jiang",
-        "color": "Green",
-        "clothes": "Jacket",
+    "shubham": {
+        "name": "shubham",
+        "color": "Dark White",
+        "clothes": "Jumper",
         "pose": "5"
+    },
+    "pavel": {
+        "name": "pavel",
+        "color": "Dark White",
+        "clothes": "Jacket",
+        "pose": "6"
+    },
+    "vladut": {
+        "name": "vladut",
+        "color": "Dark White",
+        "clothes": "Jumper",
+        "pose": "6"
     }
 }

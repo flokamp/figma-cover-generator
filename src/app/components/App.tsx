@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import '../styles/ui.css';
-import SelectFrames from './SelectFrames';
+import SelectFrames from './CreateTitle';
 import BgSelect from './BgSelect';
 import AddHand from './AddHand';
 

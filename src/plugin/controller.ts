@@ -5,10 +5,7 @@ figma.ui.resize(460, 350);
 let data = figma.root;
 let cover: PageNode;
 let frame: FrameNode;
-let selection1: SceneNode;
-let selection2: SceneNode;
-
-let frameSelection: BaseNode;
+let title: TextNode;
 
 let bgHex = '#CFE2E3';
 let collabHands = [];
@@ -27,10 +24,9 @@ let spots = [
 // posted message.
 figma.ui.onmessage = msg => {
     //if new page button was pushed
-    if (msg.type === 'newPage') {
+    if (msg.type === 'setTitleAndGo') {
         //capture selections
-        selection1 = figma.currentPage.selection[0];
-        selection2 = figma.currentPage.selection[1];
+        title = msg.input;
     }
 
     if (msg.type === 'addHand') {
@@ -40,8 +36,6 @@ figma.ui.onmessage = msg => {
     if (msg.type === 'setBgAndFinish') {
         bgHex = msg.color;
         createPageAndFrame();
-        insertFirstMockup();
-        insertSecondMockup();
 
         if (collabHands) {
             collabHands.map((collabHand, ind) => addCollabHand(collabHand, ind));
@@ -90,78 +84,6 @@ function createPageAndFrame() {
     const nodes = [];
     nodes.push(frame);
     figma.viewport.scrollAndZoomIntoView(nodes);
-}
-
-function insertFirstMockup() {
-    // Ensure that the selected node is a frame
-    if (selection1.type !== 'FRAME') {
-        figma.ui.postMessage({
-            type: 'error',
-            value: 'select a frame to render into',
-        });
-        return 'error';
-    }
-
-    //insert first mockup bottom and place it on the frame
-    var first_mockup_b = figma.createNodeFromSvg(`${iphoneX_bottom}`);
-    first_mockup_b.name = 'iPhone X Mockup Bottom';
-    first_mockup_b.resize(120, 231.5);
-    first_mockup_b.x = 113;
-    first_mockup_b.y = 76.95;
-    frame.appendChild(first_mockup_b);
-
-    //clone the selection and place it on the frame
-    var first_scene = selection1.clone();
-    var scale_factor = 105.32 / first_scene.width;
-    first_scene.rescale(scale_factor);
-    first_scene.x = 120.33;
-    first_scene.y = 83.95;
-    first_scene.cornerRadius = 12;
-    frame.appendChild(first_scene);
-
-    //insert first mockup top and place it on the frame
-    var first_mockup_t = figma.createNodeFromSvg(`${iphoneX_top}`);
-    first_mockup_t.name = 'iPhone X Mockup Top';
-    first_mockup_t.resize(62.37, 8.06);
-    first_mockup_t.x = 141.96;
-    first_mockup_t.y = 83.66;
-    frame.appendChild(first_mockup_t);
-}
-
-function insertSecondMockup() {
-    // Ensure that the selected node is a frame
-    if (selection2.type !== 'FRAME') {
-        figma.ui.postMessage({
-            type: 'error',
-            value: 'select a frame to render into',
-        });
-        return 'error';
-    }
-
-    //insert second mockup bottom and place it on the frame
-    var second_mockup_b = figma.createNodeFromSvg(`${iphoneX_bottom}`);
-    second_mockup_b.name = 'iPhone X Mockup Bottom';
-    second_mockup_b.resize(120, 231.5);
-    second_mockup_b.x = 238.97;
-    second_mockup_b.y = 39;
-    frame.appendChild(second_mockup_b);
-
-    //clone the selection and place it on the frame
-    var second_scene = selection2.clone();
-    var scale_factor = 105.32 / second_scene.width;
-    second_scene.rescale(scale_factor);
-    second_scene.x = 246.3;
-    second_scene.y = 46;
-    second_scene.cornerRadius = 12;
-    frame.appendChild(second_scene);
-
-    //insert second mockup top and place it on the frame
-    var second_mockup_t = figma.createNodeFromSvg(`${iphoneX_top}`);
-    second_mockup_t.name = 'iPhone X Mockup Top';
-    second_mockup_t.resize(62.37, 8.06);
-    second_mockup_t.x = 267.93;
-    second_mockup_t.y = 45.71;
-    frame.appendChild(second_mockup_t);
 }
 
 async function addCollabHand(handImg, ind: number) {
