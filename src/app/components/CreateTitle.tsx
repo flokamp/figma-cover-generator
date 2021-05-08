@@ -6,7 +6,7 @@ export interface TitleStepProps {
     nextStep: () => void;
 }
 
-const CreateTitle: React.SFC<TitleStepProps> = () => {
+const CreateTitle: React.SFC<TitleStepProps> = (Props: TitleStepProps) => {
     const [input, setInput] = useState('value');
 
     const handleChange = setterFunc => e => {
@@ -16,13 +16,14 @@ const CreateTitle: React.SFC<TitleStepProps> = () => {
 
     const onTitleSet = () => {
         parent.postMessage({pluginMessage: {type: 'setTitleAndGo', value: input}}, '*');
+        Props.nextStep();
     };
 
     return (
         <>
             <h2>What's the title of the project?</h2>
             <Input onChange={handleChange(setInput)} />
-            <button onClick={onTitleSet}>Next -></button>
+            <button onClick={onTitleSet}>Next</button>
         </>
     );
 };
